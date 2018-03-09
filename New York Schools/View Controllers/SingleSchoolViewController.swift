@@ -14,11 +14,11 @@ class SingleSchoolViewController: UIViewController, SATDelegate, TwicketSegmente
     
     @IBOutlet weak var segmentControl: TwicketSegmentedControl!
    
-    @IBOutlet weak var infoView: UIView!                        //view with sat info, graduation rate, description
-    @IBOutlet weak var contactView: UIView!                     //view with school's contact label
+    @IBOutlet weak var infoView: UIView!                        //Info View: view with sat info, graduation rate, description
+    @IBOutlet weak var contactView: UIView!                     //Contact View: view with school's contact information
     
     //Info View
-    @IBOutlet weak var overviewLabel: UILabel!                  //schoolOverview
+    @IBOutlet weak var overviewLabel: UILabel!                  //school overview
     @IBOutlet weak var readingLabel: UILabel!                   //SAT reading label
     @IBOutlet weak var writingLabel: UILabel!                   //SAT writing label
     @IBOutlet weak var mathLabel: UILabel!                      //SAT math label
@@ -38,17 +38,16 @@ class SingleSchoolViewController: UIViewController, SATDelegate, TwicketSegmente
     
     let contactActions = ContactActions()                       //used to call, email, and go to web from app
     
-    //used for pin on map on school's location
+    //used for pin on map showing school's location
     var center: CLLocationCoordinate2D?
     var region: MKCoordinateRegion?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //hide contact view because default on Info View
+        //hide Contact View because default start on Info View
         contactView.isHidden = true
     
-        
         //segment control
         let titles = ["Details", "Contact Info"]
         segmentControl.setSegmentItems(titles)

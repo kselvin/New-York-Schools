@@ -37,7 +37,7 @@ class SchoolsNetworkingManager {
                             let dbn = json[i]["dbn"].string ?? "N/A"
                             let boroCode = json[i]["boro"].string ?? "N/A"
                             
-                            //create school
+                            //create school object
                             let newSchool = School(schoolName: schoolName, dbn: dbn, boroCode: boroCode)
                             
                             //get additional school information
@@ -73,7 +73,7 @@ class SchoolsNetworkingManager {
                             newSchool.address?.longitude = Double(longitude)
                             newSchool.address?.latitude = Double(latitude)
                             
-                            //call method to add school to table view on main thread
+                            //call method to add school in view controller on main thread
                             DispatchQueue.main.async {
                                 self.delegate?.addSchool(school: newSchool)
                                 if i == json.count-1 {
@@ -94,6 +94,7 @@ class SchoolsNetworkingManager {
             print(response)
             if let value = response.value {
                 let json = JSON(value)
+                //using json[0] because response seems to be an array even though only returning 1 school
                 let math = json[0]["sat_math_avg_score"].string ?? "0"
                 let writing = json[0]["sat_writing_avg_score"].string ?? "0"
                 let reading = json[0]["sat_critical_reading_avg_score"].string ?? "0"
@@ -102,7 +103,7 @@ class SchoolsNetworkingManager {
                     let satScore = SATScore(mathScore: mathScore, readingScore: readingScore, writingScore: writingScore)
                     
                     DispatchQueue.main.async {
-                        //show SAT Score on view on main thread
+                        //show SAT Score on view using main thread
                         self.satDelegate?.addSATScoreToSchool(satScore: satScore)
                     }
                     

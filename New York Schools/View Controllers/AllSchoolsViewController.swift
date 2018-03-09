@@ -11,7 +11,7 @@ import JHSpinner
 
 class AllSchoolsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, SchoolsDelegate {
 
-    @IBOutlet weak var schoolsTableView: UITableView!               //table view schools list of schools is displayed in
+    @IBOutlet weak var schoolsTableView: UITableView!               //table view with list of schools displayed on it
     
     let schoolNetworkingManager = SchoolsNetworkingManager()        //makes api calls to get school data
     var schoolsList = [School]()                                    //list of ALL schools
@@ -29,7 +29,7 @@ class AllSchoolsViewController: UIViewController, UITableViewDelegate, UITableVi
     
     
     var spinner: JHSpinnerView?         //used while schools are loading into table
-    let nyPurple = UIColor(red: 128.0/255.0, green: 45.0/255.0, blue: 179.0/255.0, alpha: 1.0) //color
+    let nyPurple = UIColor(red: 128.0/255.0, green: 45.0/255.0, blue: 179.0/255.0, alpha: 1.0)  //shade of purple
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,7 +43,7 @@ class AllSchoolsViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func initialSetup(){
-        //add an empty array for each letter of the alphabet (and # for school starting with anything other than letters)
+        //add an empty array for each letter of the alphabet (and # for schools starting with anything other than letters)
         for _ in 0...alphabeticalSections.count-1 {
             schoolsInAlphabeticalOrder.append([School]())
         }
@@ -61,7 +61,7 @@ class AllSchoolsViewController: UIViewController, UITableViewDelegate, UITableVi
         
         //SchoolsDelegate allows networking manager to call function to add school to tableview in this VC
         schoolNetworkingManager.delegate = self
-        schoolNetworkingManager.getSchools()        //api call to get schools
+        schoolNetworkingManager.getSchools()        //api call to get schools from database
     }
     
     override func didReceiveMemoryWarning() {
@@ -99,7 +99,7 @@ class AllSchoolsViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        //return section for each letter + # if not searching
+        //return section for each letter if not searching
         if !isSearching() {
             return alphabeticalSections.count
         }else{
@@ -107,7 +107,7 @@ class AllSchoolsViewController: UIViewController, UITableViewDelegate, UITableVi
         }
     }
     
-    //help resize table view cell to contents
+    //help resize table view cells to contents
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableViewAutomaticDimension;
     }
@@ -130,12 +130,12 @@ class AllSchoolsViewController: UIViewController, UITableViewDelegate, UITableVi
             performSegue(withIdentifier: "toSchoolPage", sender: searchResults[indexPath.row])
         }
         
-        //so when you return to this vc it doesn't look like a cell is selected
+        //deselect row so when you return to this vc it doesn't look like a cell is selected
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        //sender is school tapped on table view
+        //sender is school selected on table view
         if segue.identifier == "toSchoolPage" {
             if let school = sender as? School {
                 if let navVC = segue.destination as? UINavigationController {
@@ -148,20 +148,20 @@ class AllSchoolsViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     //called by delegate to add schools to the tableview after they are returned from api call
-    
     func addSchool(school: School) {
-        let trimmedString = school.schoolName?.trimmingCharacters(in: .whitespaces)     //some school names stated with whitespace -- needed to trim whitespace to get true first letter
+        let trimmedString = school.schoolName?.trimmingCharacters(in: .whitespaces)     //some school names in db start with whitespace -- needed to trim whitespace to get true first letter
         let firstLetter = trimmedString![0]                                         //get true first letter school
         if let index = alphabeticalSections.index(of: String(firstLetter)) {
             //find index of letter in alphabeticalSections that matches first letter of school, add school to that section
             schoolsInAlphabeticalOrder[index].append(school)
             schoolsTableView.insertRows(at: [IndexPath(row: schoolsInAlphabeticalOrder[index].count-1, section: index)], with: .none)
-        }else{  //otherwise if school does not start with a letter, add school to last section (titled: #)
+        }else{
+            //otherwise if school does not start with a letter, add school to last section (titled: #)
             schoolsInAlphabeticalOrder[alphabeticalSections.count-1].append(school)
             schoolsTableView.insertRows(at: [IndexPath(row: schoolsInAlphabeticalOrder[alphabeticalSections.count-1].count-1, section: alphabeticalSections.count-1)], with: .none)
         }
         
-        //also append to list of ALL Schools
+        //append to list of ALL Schools
         schoolsList.append(school)
     }
     
@@ -186,12 +186,12 @@ extension AllSchoolsViewController: UISearchResultsUpdating, UISearchBarDelegate
         
         searchController.searchBar.placeholder = "Search Schools"
         
-        //scope buttons for filters user can use while searching -- borough filters
+        //scope buttons for filters user can use to narrow search to be borough specific
         searchController.searchBar.scopeButtonTitles = ["ALL", "MAN", "BKLYN", "QUEENS", "SI", "BRONX"]
         searchController.searchBar.setScopeBarButtonTitleTextAttributes([NSAttributedStringKey.font.rawValue: UIFont(name: "HelveticaNeue-Medium", size: 11.0)!], for: .normal)
         
         navigationItem.searchController = searchController      //add search controller to navigation controller
-        navigationItem.hidesSearchBarWhenScrolling = false      //don't hide search bar
+        navigationItem.hidesSearchBarWhenScrolling = false      //don't hide search bar when scroling
         definesPresentationContext = true
         
         searchController.searchBar.delegate = self              //set search bar delegate to self to use search bar delegate methods
@@ -214,7 +214,6 @@ extension AllSchoolsViewController: UISearchResultsUpdating, UISearchBarDelegate
         filterForSearch(searchController.searchBar.text!, scope: scope)            //filter with scope and search text
     }
     
-
     //check if search bar is empty
     func searchBarIsEmpty() -> Bool {
         return searchController.searchBar.text?.isEmpty ?? true
@@ -237,7 +236,7 @@ extension AllSchoolsViewController: UISearchResultsUpdating, UISearchBarDelegate
                 return boroughMatch && school.schoolName!.lowercased().contains(searchText.lowercased()) //search not empty look for school that contains search text and is in matching borough or ALL
             }
         })
-        schoolsTableView.reloadData()
+        schoolsTableView.reloadData()       //reload table with filtering
     }
     
 }

@@ -54,7 +54,7 @@ class School {
 
 }
 
-//Structs for SATScore and Address (need a better file to put these in)
+//Structs for SATScore and Address (need a better place to put these in)
 
 //SAT Score
 struct SATScore {

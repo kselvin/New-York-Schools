@@ -12,7 +12,7 @@ import UIKit
 
 class ContactActions {
     
-    //Open Mail App with prefilled To Address, call prefilled number, and open Safari with prefilled website
+    //Open Mail App with prefilled recipient Address, call prefilled number, and open Safari with prefilled website
     
     func openEmail(emailAddress: String) {
         if let url = URL(string: "mailto:\(emailAddress)") {
