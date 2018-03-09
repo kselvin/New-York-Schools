@@ -11,6 +11,7 @@ import Foundation
 
 class School {
     
+    //Info collected from database via API calls
     var dbn : String?
     var schoolName: String?
     var borough: String?
@@ -20,7 +21,6 @@ class School {
     var phoneNumber: String?
     var schoolEmail: String?
     var website: String?
-    //var grades: String?
     var numStudents: Int?
     var graduationRate: Float?
     
@@ -28,11 +28,15 @@ class School {
     
     var address: Address?
     
+    //initialize with nothing
     init (){}
     
+    //initialize with school name, dbn, and boroCode (because they don't show full borough name on database)
     init(schoolName: String, dbn: String, boroCode: String?){
         self.schoolName = schoolName
         self.dbn = dbn
+        
+        //convert boroCode to borough name
         if boroCode == "M" {
             self.borough = "Manhattan"
         }else if boroCode == "Q" {
@@ -50,7 +54,9 @@ class School {
 
 }
 
+//Structs for SATScore and Address (need a better file to put these in)
 
+//SAT Score
 struct SATScore {
     var readingScore: Int?
     var mathScore: Int?
@@ -63,10 +69,11 @@ struct SATScore {
         self.mathScore = mathScore
         self.readingScore = readingScore
         self.writingScore = writingScore
-        self.totalScore = mathScore + readingScore + writingScore
+        self.totalScore = mathScore + readingScore + writingScore       //calculate total avg SAT score on object creation
     }
 }
 
+//Address
 struct Address {
     var city: String?
     var state: String?
@@ -77,13 +84,13 @@ struct Address {
     
     var addressString: String?
     
-    
+    //initialize with street, city, state, zip
     init(street: String, city: String, state: String, zip: String){
         self.street = street
         self.city = city
         self.state = state
         self.zip = zip
-        addressString = street + ", " + city + " " + state + " " + zip
+        addressString = street + ", " + city + " " + state + " " + zip      //create full address string used for label text on creation 
     }
     
 }

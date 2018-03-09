@@ -12,6 +12,8 @@ import UIKit
 
 class ContactActions {
     
+    //Open Mail App with prefilled To Address, call prefilled number, and open Safari with prefilled website
+    
     func openEmail(emailAddress: String) {
         if let url = URL(string: "mailto:\(emailAddress)") {
             UIApplication.shared.open(url, options: [:], completionHandler: nil)

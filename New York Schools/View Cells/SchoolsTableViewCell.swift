@@ -8,12 +8,12 @@
 
 import UIKit
 
+//Table view cell used to show school names on AllSchoolsViewController
+//NOTE: Could use a basic table view cell and not need a custom class for this, but was planning on adding more to the cell than just the name label originally 
+
 class SchoolsTableViewCell: UITableViewCell {
 
     @IBOutlet weak var schoolNameLabel: UILabel!
-    
-    var row: Int?
-    var section: Int? 
     
     override func awakeFromNib() {
         super.awakeFromNib()

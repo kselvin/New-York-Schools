@@ -138,11 +138,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "New York Schools/SchoolsNetworkingManager.swift"
-            timestampString = "542168186.006682"
+            timestampString = "542262661.676034"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "82"
-            endingLineNumber = "82"
+            startingLineNumber = "91"
+            endingLineNumber = "91"
             landmarkName = "getSATScoreForSchool(dbn:)"
             landmarkType = "7">
             <Locations>
@@ -186,11 +186,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "New York Schools/SchoolsNetworkingManager.swift"
-            timestampString = "542168186.006822"
+            timestampString = "542262661.6761301"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "83"
-            endingLineNumber = "83"
+            startingLineNumber = "92"
+            endingLineNumber = "92"
             landmarkName = "getSATScoreForSchool(dbn:)"
             landmarkType = "7">
             <Locations>
@@ -234,11 +234,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "New York Schools/SchoolsNetworkingManager.swift"
-            timestampString = "542168186.006938"
+            timestampString = "542262661.6762021"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "84"
-            endingLineNumber = "84"
+            startingLineNumber = "93"
+            endingLineNumber = "93"
             landmarkName = "getSATScoreForSchool(dbn:)"
             landmarkType = "7">
             <Locations>

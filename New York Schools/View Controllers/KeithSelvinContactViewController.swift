@@ -8,6 +8,7 @@
 
 import UIKit
 
+//Contact Keith!
 class KeithSelvinContactViewController: UIViewController {
 
     let contactActions = ContactActions()
@@ -20,13 +21,13 @@ class KeithSelvinContactViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     @IBAction func phoneButtonTapped(_ sender: Any) {
-        contactActions.openPhone(phoneNumber: "2012904179")
+        contactActions.openPhone(phoneNumber: "2012904179")                 //call me
     }
     @IBAction func emailButtonTapped(_ sender: Any) {
-        contactActions.openEmail(emailAddress: "selvinkeith@gmail.com")
+        contactActions.openEmail(emailAddress: "selvinkeith@gmail.com")     //email me
     }
     @IBAction func websiteButtonTapped(_ sender: Any) {
-        contactActions.openWebsite(urlString: "https://kselvin.com")
+        contactActions.openWebsite(urlString: "https://kselvin.com")        //go to my website 
     }
     
 

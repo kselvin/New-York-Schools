@@ -52,6 +52,49 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0E3FCE6E205245C600345C25 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				0E505805205033BC005B093F /* AllSchoolsViewController.swift */,
+				0E219DF32050883900D876D6 /* SingleSchoolViewController.swift */,
+				0E219DF72050D3DD00D876D6 /* KeithSelvinContactViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		0E3FCE6F205245D500345C25 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				0E50581520503531005B093F /* SchoolsNetworkingManager.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		0E3FCE70205245F900345C25 /* Data Objects */ = {
+			isa = PBXGroup;
+			children = (
+				0E50581720503604005B093F /* School.swift */,
+			);
+			path = "Data Objects";
+			sourceTree = "<group>";
+		};
+		0E3FCE712052464C00345C25 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				0E219DF52050D09F00D876D6 /* ContactActions.swift */,
+				0E505803205033BC005B093F /* AppDelegate.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		0E3FCE722052466E00345C25 /* View Cells */ = {
+			isa = PBXGroup;
+			children = (
+				0E505819205042CD005B093F /* SchoolsTableViewCell.swift */,
+			);
+			path = "View Cells";
+			sourceTree = "<group>";
+		};
 		0E5057F7205033BC005B093F = {
 			isa = PBXGroup;
 			children = (
@@ -73,18 +116,15 @@
 		0E505802205033BC005B093F /* New York Schools */ = {
 			isa = PBXGroup;
 			children = (
-				0E505803205033BC005B093F /* AppDelegate.swift */,
-				0E505805205033BC005B093F /* AllSchoolsViewController.swift */,
+				0E3FCE6E205245C600345C25 /* View Controllers */,
+				0E3FCE70205245F900345C25 /* Data Objects */,
+				0E3FCE6F205245D500345C25 /* Networking */,
+				0E3FCE722052466E00345C25 /* View Cells */,
+				0E3FCE712052464C00345C25 /* Utilities */,
 				0E505807205033BC005B093F /* Main.storyboard */,
 				0E50580A205033BC005B093F /* Assets.xcassets */,
 				0E50580C205033BC005B093F /* LaunchScreen.storyboard */,
 				0E50580F205033BC005B093F /* Info.plist */,
-				0E50581520503531005B093F /* SchoolsNetworkingManager.swift */,
-				0E50581720503604005B093F /* School.swift */,
-				0E505819205042CD005B093F /* SchoolsTableViewCell.swift */,
-				0E219DF32050883900D876D6 /* SingleSchoolViewController.swift */,
-				0E219DF52050D09F00D876D6 /* ContactActions.swift */,
-				0E219DF72050D3DD00D876D6 /* KeithSelvinContactViewController.swift */,
 			);
 			path = "New York Schools";
 			sourceTree = "<group>";
@@ -200,12 +240,14 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-New York Schools/Pods-New York Schools-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/JHSpinner/JHSpinner.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/TwicketSegmentedControl/TwicketSegmentedControl.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JHSpinner.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TwicketSegmentedControl.framework",
 			);
